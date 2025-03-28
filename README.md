@@ -5,7 +5,9 @@
 
 Un script en Python que monitorea condiciones climáticas extremas y envía alertas predictivas a Telegram. Ideal para prevenir riesgos meteorológicos con 24-120 horas de anticipación.
 
-![Telegram Alert Example](screenshots/alerta-telegram.png)
+Cambiar el archivo .env.example a .env y ajustar los parámetros del programa.
+
+![Ejemplo de la alerta en Telegram](screenshots/alerta-telegram.png)
 
 ## ✨ Características
 

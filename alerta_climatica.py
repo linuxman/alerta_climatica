@@ -39,7 +39,6 @@ def ms2km(ms):
 
 def obtener_prediccion():
     url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&units={UNITS}&lang={LANG}&appid={API_KEY}"
-    print(url)
     response = requests.get(url)
     return response.json()
 

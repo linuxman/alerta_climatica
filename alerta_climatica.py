@@ -22,14 +22,14 @@ TOKEN = os.getenv("TOKEN")
 # Para revisar las unidades de los valores:
 # https://openweathermap.org/weather-data
 
-# La velocidad del cienta es en m/s
+# La velocidad del viento de la API esta en m/s
 # Para convertir km/h a m/s multiplicar por 0.2778
 
 ALERT_THRESHOLDS = {
     "temp_min": 0,            # Temperatura mínima (°C)
     "temp_max": 40,           # Temperatura máxima (°C)
     "precipitation": 20,      # Lluvia acumulada (mm en 3h)
-    "wind_speed_mod": 15,     # Vientos moderados - 15 km/s aprox
+    "wind_speed_mod": 20,     # Vientos moderados - 20 km/s aprox
     "wind_speed_alert":40     # Vientos fuertes, mayores de 40 km/h
 }
 

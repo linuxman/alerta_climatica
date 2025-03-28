@@ -64,21 +64,21 @@ def analizar_pronostico(data):
 
             # Verificar umbrales
             if temp <= ALERT_THRESHOLDS["temp_min"]:
-                alertas.append(f"Temperatura BAJA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"❄️ Temperatura BAJA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
             elif temp >= ALERT_THRESHOLDS["temp_max"]:
-                alertas.append(f"Temperatura ALTA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌡️ Temperatura ALTA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if lluvia >= ALERT_THRESHOLDS["precipitation"]:
-                alertas.append(f"Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌧️ Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if viento >= ALERT_THRESHOLDS["wind_speed_mod"] and viento <= ALERT_THRESHOLDS["wind_speed_alert"]:
-                alertas.append(f"Vientos moderados (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🍃 Vientos moderados (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if viento >= ALERT_THRESHOLDS["wind_speed_alert"]:
-                alertas.append(f"Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌬️ Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if visibilidad <= ALERT_THRESHOLDS["visibility_alert"]:
-                alertas.append(f"Visibilidad reducida (niebla, tolvaneras) (visibilidad: {visibilidad} m) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌫️ Visibilidad reducida (niebla, tolvaneras) (visibilidad: {visibilidad} m) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
     return alertas
 

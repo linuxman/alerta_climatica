@@ -30,7 +30,8 @@ ALERT_THRESHOLDS = {
     "temp_max": 40,           # Temperatura máxima (°C)
     "precipitation": 20,      # Lluvia acumulada (mm en 3h)
     "wind_speed_mod": 20,     # Vientos moderados - 20 km/s aprox
-    "wind_speed_alert":40     # Vientos fuertes, mayores de 40 km/h
+    "wind_speed_alert":40,    # Vientos fuertes, mayores de 40 km/h
+    "visibility_alert":1000   # Visibilidad reducida a 1000 m
 }
 
 def ms2km(ms):
@@ -57,6 +58,7 @@ def analizar_pronostico(data):
             lluvia = entry.get("rain", {}).get("3h", 0)
             # Para mayor claridad, convertí los m/s a km/h
             viento = ms2km(entry["wind"]["speed"])
+            visibilidad = entry["visibility"]
             # humedad = entry["main"]["humidity"]
             clima = entry["weather"][0]["description"]
 
@@ -74,6 +76,9 @@ def analizar_pronostico(data):
 
             if viento >= ALERT_THRESHOLDS["wind_speed_alert"]:
                 alertas.append(f"Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+
+            if visibilidad <= ALERT_THRESHOLDS["visibility_alert"]:
+                alertas.append(f"Visibilidad reducida (niebla, tolvaneras) (visibilidad: {visibilidad} m) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
     return alertas
 

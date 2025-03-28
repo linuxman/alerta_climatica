@@ -1,0 +1,8 @@
+# APIs y KEYs
+.env
+
+# Poetry
+src/
+tests/
+
+.vscode/

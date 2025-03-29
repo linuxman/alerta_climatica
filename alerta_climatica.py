@@ -25,12 +25,15 @@ TOKEN = os.getenv("TOKEN")
 # La velocidad del viento de la API esta en m/s
 # Para convertir km/h a m/s multiplicar por 0.2778
 
+# Escala de Beaufort como referencia de velocidad del viento.
+# https://www.adipav.org/escala-beaufort/
+
 ALERT_THRESHOLDS = {
     "temp_min": 0,            # Temperatura mínima (°C)
     "temp_max": 40,           # Temperatura máxima (°C)
     "precipitation": 20,      # Lluvia acumulada (mm en 3h)
     "wind_speed_mod": 20,     # Vientos moderados - 20 km/s aprox
-    "wind_speed_alert":40,    # Vientos fuertes, mayores de 40 km/h
+    "wind_speed_alert":40,    # Vientos fuertes, mayores a 40 km/h
     "visibility_alert":1000   # Visibilidad reducida a 1000 m
 }
 

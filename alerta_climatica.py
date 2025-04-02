@@ -74,8 +74,10 @@ def analizar_pronostico(data):
             if lluvia >= ALERT_THRESHOLDS["precipitation"]:
                 alertas.append(f"🌧️ Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
-            if viento >= ALERT_THRESHOLDS["wind_speed_mod"] and viento <= ALERT_THRESHOLDS["wind_speed_alert"]:
-                alertas.append(f"🍃 Vientos moderados (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+# Temporalmente desactivo la alerta de vientos moderados
+
+#            if viento >= ALERT_THRESHOLDS["wind_speed_mod"] and viento <= ALERT_THRESHOLDS["wind_speed_alert"]:
+#                alertas.append(f"🍃 Vientos moderados (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if viento >= ALERT_THRESHOLDS["wind_speed_alert"]:
                 alertas.append(f"🌬️ Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")

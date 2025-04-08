@@ -30,6 +30,7 @@ TOKEN = os.getenv("TOKEN")
 
 ALERT_THRESHOLDS = {
     "temp_min": 0,            # Temperatura mínima (°C)
+    "temp_baja": 8,           # Descenso en la temperatura (ºC)
     "temp_max": 40,           # Temperatura máxima (°C)
     "precipitation": 20,      # Lluvia acumulada (mm en 3h)
     "wind_speed_mod": 20,     # Vientos moderados - 20 km/s aprox
@@ -68,16 +69,15 @@ def analizar_pronostico(data):
             # Verificar umbrales
             if temp <= ALERT_THRESHOLDS["temp_min"]:
                 alertas.append(f"❄️ Temperatura BAJA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
-            elif temp >= ALERT_THRESHOLDS["temp_max"]:
+
+            if temp > ALERT_THRESHOLDS["temp_min"] and temp <= ALERT_THRESHOLDS["temp_baja"]:
+                alertas.append((f"⛄ Descenso de temperatura ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}"))
+
+            if temp >= ALERT_THRESHOLDS["temp_max"]:
                 alertas.append(f"🌡️ Temperatura ALTA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if lluvia >= ALERT_THRESHOLDS["precipitation"]:
                 alertas.append(f"🌧️ Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
-
-# Temporalmente desactivo la alerta de vientos moderados
-
-#            if viento >= ALERT_THRESHOLDS["wind_speed_mod"] and viento <= ALERT_THRESHOLDS["wind_speed_alert"]:
-#                alertas.append(f"🍃 Vientos moderados (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
 
             if viento >= ALERT_THRESHOLDS["wind_speed_alert"]:
                 alertas.append(f"🌬️ Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")

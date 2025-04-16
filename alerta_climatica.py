@@ -45,6 +45,7 @@ def ms2km(ms):
 def obtener_prediccion():
     url = f"https://api.openweathermap.org/data/2.5/forecast?lat={LAT}&lon={LON}&units={UNITS}&lang={LANG}&appid={API_KEY}"
     response = requests.get(url)
+    print(" Descargando información meteorológica.")
     return response.json()
 
 def analizar_pronostico(data):
@@ -68,22 +69,22 @@ def analizar_pronostico(data):
 
             # Verificar umbrales
             if temp <= ALERT_THRESHOLDS["temp_min"]:
-                alertas.append(f"❄️ Temperatura BAJA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"❄️ Temperatura BAJA ({temp}°C) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}")
 
             if temp > ALERT_THRESHOLDS["temp_min"] and temp <= ALERT_THRESHOLDS["temp_baja"]:
-                alertas.append((f"⛄ Descenso de temperatura ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}"))
+                alertas.append((f"⛄ Descenso de temperatura ({temp}°C) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}"))
 
             if temp >= ALERT_THRESHOLDS["temp_max"]:
-                alertas.append(f"🌡️ Temperatura ALTA ({temp}°C) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌡️ Temperatura ALTA ({temp}°C) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}")
 
             if lluvia >= ALERT_THRESHOLDS["precipitation"]:
-                alertas.append(f"🌧️ Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌧️ Lluvia SEVERA ({lluvia} mm/3h) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}")
 
             if viento >= ALERT_THRESHOLDS["wind_speed_alert"]:
-                alertas.append(f"🌬️ Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌬️ Vientos fuertes (viento: {viento} km/h) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}")
 
             if visibilidad <= ALERT_THRESHOLDS["visibility_alert"]:
-                alertas.append(f"🌫️ Visibilidad reducida (niebla, tolvaneras) (visibilidad: {visibilidad} m) el {fecha_prediccion.strftime('%d/%m %H:%M')}")
+                alertas.append(f"🌫️ Visibilidad reducida (niebla, tolvaneras) (visibilidad: {visibilidad} m) el {fecha_prediccion.strftime('%a %d-%m-%Y %I %p')}")
 
     return alertas
 

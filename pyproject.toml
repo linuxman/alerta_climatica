@@ -1,7 +1,7 @@
 [project]
 name = "alerta-climatica"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "Analizador de condiciones climáticas severas."
 authors = [
     {name = "LinuxmanR4",email = "inguanzo@gmail.com"}
 ]
